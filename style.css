@@ -1,0 +1,291 @@
+body {
+    background-color: #FDF0D5; /* light cream */
+    color: #665A48; /* dark brown */
+    font-family: 'Baloo 2', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+#player-container {
+    width: 95%;
+    max-width: 500px;
+    background-color: #F8E2CF; /* peachy pink */
+    border: 4px solid #DBC8AC; /* muted brown */
+    border-radius: 25px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1), 0 6px 6px rgba(0,0,0,0.15);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+#screen {
+    background-color: #FFF8F0; /* very light cream */
+    border: 3px solid #DBC8AC;
+    border-radius: 15px;
+    padding: 15px;
+    height: 300px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+    image-rendering: auto;
+}
+
+/* Custom scrollbar for webkit browsers */
+#screen::-webkit-scrollbar {
+    width: 12px;
+}
+
+#screen::-webkit-scrollbar-track {
+    background: #FFF8F0;
+    border-left: 2px solid #DBC8AC;
+}
+
+#screen::-webkit-scrollbar-thumb {
+    background-color: #E0AFA0; /* muted coral */
+    border-radius: 6px;
+    border: 3px solid #FFF8F0;
+}
+
+
+#playlist-header {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    text-shadow: none;
+    padding-bottom: 10px;
+    border-bottom: 2px dashed #DBC8AC;
+    color: #665A48;
+    font-weight: 700;
+}
+
+#playlist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#playlist li {
+    padding: 10px 8px;
+    cursor: pointer;
+    border-bottom: 1px solid #F8E2CF;
+    transition: all 0.2s ease;
+    font-size: 1em;
+    word-break: break-all;
+    border-radius: 8px;
+    margin-bottom: 2px;
+}
+
+#playlist li:last-child {
+    border-bottom: none;
+}
+
+#playlist li:hover {
+    background-color: #EADCD0;
+    color: #665A48;
+}
+
+#playlist li.playing {
+    background-color: #E0AFA0; /* muted coral */
+    color: #FFF8F0; /* light cream text */
+    text-shadow: none;
+    font-weight: 700;
+    border-bottom-color: #E0AFA0;
+}
+
+#playlist li.placeholder {
+    text-align: center;
+    cursor: default;
+    color: #C3A995;
+    border-bottom: none;
+    font-weight: 400;
+}
+#playlist li.placeholder:hover {
+    background-color: transparent;
+}
+
+
+#controls-wrapper {
+    background-color: transparent;
+    padding: 15px 0 0 0;
+    border-radius: 10px;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#audio-player {
+    display: none;
+}
+
+#track-info {
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+#now-playing-text {
+    font-size: 0.8em;
+    color: #8c7a6b;
+    margin-bottom: 2px;
+    text-shadow: none;
+    font-weight: 700;
+}
+
+#track-title {
+    font-size: 1.1em;
+    height: 1.2em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #665A48;
+    font-weight: 700;
+}
+
+
+#progress-container {
+    width: 100%;
+}
+
+/* --- Cute Progress Bar --- */
+#progress-bar {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 12px;
+    background: #FFF8F0; /* Light cream track */
+    outline: none;
+    border: 2px solid #DBC8AC; /* Muted brown border */
+    padding: 0;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 6px;
+}
+
+#progress-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #665A48; /* dark brown */
+    cursor: pointer;
+    border: none;
+    border-radius: 50%;
+    margin-top: -6px; /* center thumb vertically */
+    box-shadow: -600px 0 0 590px #E0AFA0; /* The fill */
+}
+
+#progress-bar::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #665A48;
+    cursor: pointer;
+    border: none;
+    border-radius: 50%;
+}
+
+#progress-bar::-moz-range-progress {
+  background-color: #E0AFA0; 
+  height: 12px;
+  border-radius: 6px;
+}
+
+#progress-bar::-moz-range-track {
+  background-color: #FFF8F0;
+  border: 2px solid #DBC8AC;
+  border-radius: 6px;
+}
+
+
+#time-container {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9em;
+    margin-top: -10px;
+    padding: 0 5px;
+    font-weight: 700;
+    color: #8c7a6b;
+}
+
+#buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 5px;
+    align-items: center;
+}
+
+.control-button {
+    background-color: #FFF8F0;
+    border: 2px solid #DBC8AC;
+    color: #665A48;
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.8em;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    line-height: 1;
+    border-radius: 50%;
+    text-shadow: none;
+}
+
+#play-pause-button {
+    width: 70px;
+    height: 70px;
+    font-size: 2.2em;
+}
+
+.control-button:hover {
+    background-color: #E0AFA0;
+    color: #FFF8F0;
+    border-color: #E0AFA0;
+    text-shadow: none;
+}
+
+.control-button:active {
+    transform: scale(0.95);
+    background-color: #c99c8e;
+}
+
+input[type="file"] {
+    display: none; /* Hide the default input */
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.action-button {
+    background-color: #FFF8F0; 
+    color: #665A48;
+    padding: 12px 24px;
+    border: 2px solid #DBC8AC;
+    border-radius: 15px;
+    cursor: pointer;
+    font-family: 'Baloo 2', cursive;
+    text-align: center;
+    transition: all 0.2s;
+    text-shadow: none;
+    font-weight: 700;
+    font-size: 1em;
+    line-height: normal; /* For <button> tag consistency */
+    border-style: solid; /* For <button> tag consistency */
+}
+
+.action-button:hover {
+    background-color: #E0AFA0;
+    color: #FFF8F0;
+    text-shadow: none;
+    border-color: #E0AFA0;
+}

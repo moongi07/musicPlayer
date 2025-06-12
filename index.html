@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reproductor MP3 Retro</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="player-container">
+        <div id="screen">
+            <div id="playlist-header">LISTA DE REPRODUCCIÓN</div>
+            <ul id="playlist">
+                <li class="placeholder">Sube tus archivos MP3...</li>
+            </ul>
+        </div>
+        <div id="controls-wrapper">
+            <audio id="audio-player"></audio> <!-- No controls, it's just for playback -->
+
+            <div id="track-info">
+                <div id="now-playing-text">AHORA SUENA:</div>
+                <div id="track-title">-- NINGUNA CANCIÓN --</div>
+            </div>
+
+            <div id="progress-container">
+                <input type="range" id="progress-bar" value="0" min="0" step="1">
+            </div>
+            <div id="time-container">
+                <span id="current-time">00:00</span>
+                <span id="total-duration">00:00</span>
+            </div>
+
+            <div id="buttons-container">
+                <button id="prev-button" class="control-button">|◄</button>
+                <button id="play-pause-button" class="control-button">►</button>
+                <button id="next-button" class="control-button">►|</button>
+            </div>
+            
+            <div class="button-container">
+                <label for="file-input" class="action-button">
+                    Cargar MP3
+                </label>
+                <input id="file-input" type="file" accept=".mp3" multiple/>
+                <button id="clear-playlist-button" class="action-button">Borrar Lista</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
