@@ -53,22 +53,30 @@ fullscreenButton.addEventListener('click', toggleFullscreen);
     }
 
 
-    function saveSongsToDB(files, callback) {
-        if (!db) return;
-        const transaction = db.transaction(['songs'], 'readwrite');
-        const store = transaction.objectStore('songs');
-        
-        // Clear existing songs before adding new ones
-        store.clear().onsuccess = () => {
-             Array.from(files).forEach(file => {
-                if (file.type === "audio/mpeg") {
+function saveSongsToDB(files, callback) {
+    if (!db) return;
+    const transaction = db.transaction(['songs'], 'readwrite');
+    const store = transaction.objectStore('songs');
+
+    // Primero obtenemos todas las canciones para evitar duplicados
+    const getAllRequest = store.getAll();
+
+    getAllRequest.onsuccess = () => {
+        const existingSongs = getAllRequest.result;
+
+        Array.from(files).forEach(file => {
+            if (file.type === "audio/mpeg") {
+                const alreadyExists = existingSongs.some(song => song.name === file.name);
+                if (!alreadyExists) {
                     store.add({ name: file.name, file: file });
                 }
-            });
-        };
+            }
+        });
+    };
 
-        transaction.oncomplete = callback;
-    }
+    transaction.oncomplete = callback;
+}
+
 
     function loadPlaylistFromDB(autoplay = false) {
         if (!db) return;
