@@ -11,6 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const playPauseButton = document.getElementById('play-pause-button');
     const nextButton = document.getElementById('next-button');
     const clearPlaylistButton = document.getElementById('clear-playlist-button');
+    const fullscreenButton = document.getElementById('fullscreen-button');
+fullscreenButton.addEventListener('click', toggleFullscreen);
+
 
     // State
     let playlist = []; // Array of { id, name, file, li, src }
@@ -37,6 +40,18 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Database error:', event.target.error);
         };
     }
+    function toggleFullscreen() {
+        const elem = document.documentElement;
+
+        if (!document.fullscreenElement) {
+            elem.requestFullscreen?.().catch(err => {
+                console.error(`Error al entrar en pantalla completa: ${err.message}`);
+            });
+        } else {
+            document.exitFullscreen?.();
+        }
+    }
+
 
     function saveSongsToDB(files, callback) {
         if (!db) return;

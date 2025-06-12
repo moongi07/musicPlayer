@@ -294,3 +294,20 @@ input[type="file"] {
     transform: translateY(4px);
     box-shadow: 0 0px #222;
 }
+
+#fullscreen-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: white; /* o el color que haga buen contraste */
+    z-index: 1000;
+    transition: transform 0.2s ease;
+}
+
+#fullscreen-button:hover {
+    transform: scale(1.2);
+}
