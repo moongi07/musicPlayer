@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextButton = document.getElementById('next-button');
     const clearPlaylistButton = document.getElementById('clear-playlist-button');
     const fullscreenButton = document.getElementById('fullscreen-button');
-fullscreenButton.addEventListener('click', toggleFullscreen);
+
 
 
     // State
@@ -229,6 +229,7 @@ function saveSongsToDB(files, callback) {
     audioPlayer.addEventListener('ended', playNext);
     audioPlayer.addEventListener('timeupdate', updateProgress);
     progressBar.addEventListener('input', seek);
+    fullscreenButton.addEventListener('click', toggleFullscreen);
 
     // --- Initialization ---
     initDB();
